@@ -35,7 +35,7 @@ export function TopNav({
 
   return (
     <View style={styles.container}>
-      {/* 1. Left Cloud & Shades Avatar Button */}
+      {/* 1. Left Authentic Yellow Cloud Avatar Button */}
       <TouchableOpacity
         style={styles.avatarButton}
         onPress={onOpenDrawer}
@@ -43,7 +43,7 @@ export function TopNav({
         activeOpacity={0.8}
         accessibilityLabel="Open Profile Drawer">
         <PhantomCloudAvatar
-          size={36}
+          size={40}
           avatarId={avatarId}
           customUri={customAvatarUri}
         />
@@ -82,12 +82,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
-    paddingTop: 6,
-    paddingBottom: 6,
+    paddingTop: Platform.OS === 'android' ? 6 : 4,
+    paddingBottom: 8,
     backgroundColor: '#000000',
   },
   avatarButton: {
-    marginRight: 12,
+    marginRight: 10,
   },
   tabRow: {
     flexDirection: 'row',
@@ -97,27 +97,27 @@ const styles = StyleSheet.create({
   tabPill: {
     height: 38,
     borderRadius: 19,
-    paddingHorizontal: 18,
+    paddingHorizontal: 16,
     justifyContent: 'center',
     alignItems: 'center',
   },
   tabPillActive: {
-    backgroundColor: '#ABA0EE', // Signature Phantom lilac matching original screenshot
+    backgroundColor: '#ABA0EE', // Signature Phantom lilac
   },
   tabPillInactive: {
-    backgroundColor: '#1C1C20', // Dark charcoal inactive background matching original screenshot
+    backgroundColor: '#1E1E24', // Dark charcoal inactive background matching Image 1
   },
   tabLabel: {
     fontSize: 15,
     letterSpacing: -0.2,
   },
   tabLabelActive: {
-    color: '#0D0C1D', // Dark navy/black text on lilac pill
+    color: '#000000', // Pure black bold text matching Image 1
     fontFamily: TypographyFonts.bold,
     fontWeight: Platform.OS === 'ios' ? '700' : undefined,
   },
   tabLabelInactive: {
-    color: '#9E9EA8', // Crisp clean muted gray on dark pill
+    color: '#8E8E98', // Crisp clean muted gray matching Image 1
     fontFamily: TypographyFonts.semiBold,
     fontWeight: Platform.OS === 'ios' ? '600' : undefined,
   },

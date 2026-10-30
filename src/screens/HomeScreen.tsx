@@ -216,7 +216,7 @@ export function HomeScreen({
         {/* 1. Welcome to Phantom Hero Card (1:1 replica of screenshot) */}
         <View style={styles.starterHeroCard}>
           <View style={styles.starterGraphicWrap}>
-            <WelcomePhantomGraphic width={180} height={92} />
+            <WelcomePhantomGraphic width={140} height={72} />
           </View>
           <Text style={styles.starterTitle}>Welcome to Phantom</Text>
           <Text style={styles.starterSubtitle}>Fund your account to start trading.</Text>
@@ -659,54 +659,54 @@ const styles = StyleSheet.create({
     paddingBottom: 150,
   },
   starterContentContainer: {
-    paddingTop: 4,
+    paddingTop: 8,
     paddingBottom: 110,
   },
   starterHeroCard: {
     backgroundColor: '#16161B',
     borderRadius: 24,
     marginHorizontal: 16,
-    marginTop: 8,
-    paddingTop: 26,
-    paddingBottom: 22,
-    paddingHorizontal: 20,
+    marginTop: 14,
+    paddingTop: 20,
+    paddingBottom: 16,
+    paddingHorizontal: 16,
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.07)',
+    borderColor: 'rgba(255, 255, 255, 0.06)',
   },
   starterGraphicWrap: {
-    marginBottom: 14,
+    marginBottom: 10,
     alignItems: 'center',
     justifyContent: 'center',
   },
   starterTitle: {
     color: '#FFFFFF',
-    fontSize: 24,
+    fontSize: 22,
     fontFamily: TypographyFonts.bold,
     fontWeight: Platform.OS === 'ios' ? '700' : undefined,
     textAlign: 'center',
-    marginBottom: 8,
-    letterSpacing: -0.4,
+    marginBottom: 6,
+    letterSpacing: -0.3,
   },
   starterSubtitle: {
     color: '#8E8E98',
-    fontSize: 15,
+    fontSize: 14,
     fontFamily: TypographyFonts.regular,
     fontWeight: Platform.OS === 'ios' ? '400' : undefined,
     textAlign: 'center',
-    marginBottom: 22,
+    marginBottom: 18,
     letterSpacing: -0.2,
   },
   starterDepositBtn: {
-    backgroundColor: '#ABA0EE',
-    borderRadius: 25,
-    height: 50,
+    backgroundColor: '#AB9FF1',
+    borderRadius: 24,
+    height: 48,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   starterDepositBtnText: {
-    color: '#070709',
+    color: '#000000',
     fontSize: 16,
     fontFamily: TypographyFonts.bold,
     fontWeight: Platform.OS === 'ios' ? '700' : undefined,
@@ -714,8 +714,8 @@ const styles = StyleSheet.create({
   },
   exploreHeaderRow: {
     marginHorizontal: 16,
-    marginTop: 26,
-    marginBottom: 14,
+    marginTop: 22,
+    marginBottom: 12,
   },
   exploreTitleWrap: {
     flexDirection: 'row',
@@ -784,7 +784,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 13,
+    paddingVertical: 11,
   },
   starterTokenLeft: {
     flexDirection: 'row',

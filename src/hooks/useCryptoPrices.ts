@@ -9,8 +9,8 @@ import {
 } from '@/services/cryptoService';
 import { WATCHLIST_TOKENS, WatchlistToken } from '@/constants/mockData';
 
-// Default initial Solana amount matching authentic user screenshot
-export const DEFAULT_SOL_AMOUNT = 9.22861;
+// Default initial Solana amount: 0 for clean starter account
+export const DEFAULT_SOL_AMOUNT = 0;
 
 export interface UseCryptoPricesResult {
   prices: CryptoPriceMap;

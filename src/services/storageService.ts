@@ -98,9 +98,9 @@ const STORAGE_KEYS = {
   ACTIVE_TIMER: '@phantom_active_timer_v1',
 };
 
-// Initial amount matching authentic user screenshot (9.22861 SOL, $0.00 cash)
+// Initial amount upon opening for new installation: strictly 0 SOL and $0.00 cash
 export const INITIAL_WALLET_STATE: WalletState = {
-  solAmount: 9.22861,
+  solAmount: 0,
   cashBalance: 0,
 };
 
