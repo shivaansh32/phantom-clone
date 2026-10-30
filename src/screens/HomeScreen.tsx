@@ -102,11 +102,11 @@ function XrpIcon({ size = 32 }: { size?: number }) {
 /**
  * 1:1 replica of the clean hollow paper airplane Send icon from original Phantom screenshot
  */
-function SendIcon({ size = 18, color = '#EFEFEF' }: { size?: number; color?: string }) {
+function SendIcon({ size = 16, color = '#FFFFFF' }: { size?: number; color?: string }) {
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <Path
-        d="M21.5 2.5L2.5 9.5L11.5 14.5L14.5 21.5L21.5 2.5Z"
+        d="M21 3L3 10.5L10.5 14.5L14.5 21L21 3Z"
         stroke={color}
         strokeWidth="1.8"
         strokeLinecap="round"
@@ -119,13 +119,13 @@ function SendIcon({ size = 18, color = '#EFEFEF' }: { size?: number; color?: str
 /**
  * 1:1 replica of the clean + sign Deposit icon from user screenshot
  */
-function DepositPlusIcon({ size = 15, color = '#EFEFEF' }: { size?: number; color?: string }) {
+function DepositPlusIcon({ size = 13, color = '#FFFFFF' }: { size?: number; color?: string }) {
   return (
     <Svg width={size} height={size} viewBox="0 0 16 16" fill="none">
       <Path
-        d="M8 2.5V13.5M2.5 8H13.5"
+        d="M8 2V14M2 8H14"
         stroke={color}
-        strokeWidth="2"
+        strokeWidth="1.9"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -420,7 +420,7 @@ export function HomeScreen({
           style={styles.actionPillBtn}
           onPress={onPressSend}
           activeOpacity={0.75}>
-          <SendIcon size={17} color="#EFEFEF" />
+          <SendIcon size={16} color="#FFFFFF" />
           <Text style={styles.actionBtnText}>Send</Text>
         </TouchableOpacity>
 
@@ -428,7 +428,7 @@ export function HomeScreen({
           style={styles.actionPillBtn}
           onPress={onPressDeposit}
           activeOpacity={0.75}>
-          <DepositPlusIcon size={14} color="#EFEFEF" />
+          <DepositPlusIcon size={13} color="#FFFFFF" />
           <Text style={styles.actionBtnText}>Deposit</Text>
         </TouchableOpacity>
       </View>
@@ -827,8 +827,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 5,
-    marginTop: 28,
-    marginBottom: 16,
+    marginTop: 14,
+    marginBottom: 6,
     alignSelf: 'flex-start',
   },
   accountSelectorText: {
@@ -848,29 +848,29 @@ const styles = StyleSheet.create({
   },
   moneyAmount: {
     color: '#FFFFFF',
-    fontSize: 38,
+    fontSize: 36,
     fontFamily: TypographyFonts.bold,
     fontWeight: Platform.OS === 'ios' ? '700' : undefined,
-    letterSpacing: -0.6,
+    letterSpacing: -0.5,
   },
   changeRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 7,
-    marginTop: 8,
+    gap: 6,
+    marginTop: 6,
   },
   changeText: {
     color: '#FF2A55',
-    fontSize: 14.5,
+    fontSize: 14,
     fontFamily: TypographyFonts.medium,
     fontWeight: Platform.OS === 'ios' ? '500' : undefined,
     letterSpacing: -0.2,
   },
   changePill: {
     backgroundColor: '#350E18', // Deep burgundy pill background sampled 1:1 from screenshot
-    paddingHorizontal: 7,
-    paddingVertical: 2.5,
-    borderRadius: 6,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -879,7 +879,7 @@ const styles = StyleSheet.create({
   },
   changePillText: {
     color: '#FF2A55', // Bright crimson red text on dark crimson
-    fontSize: 12.5,
+    fontSize: 12,
     fontFamily: TypographyFonts.bold,
     fontWeight: Platform.OS === 'ios' ? '700' : undefined,
     letterSpacing: -0.1,
@@ -889,22 +889,22 @@ const styles = StyleSheet.create({
   },
   actionButtonsRow: {
     flexDirection: 'row',
-    gap: 12,
-    marginTop: 28,
-    marginBottom: 26,
+    gap: 10,
+    marginTop: 18,
+    marginBottom: 16,
   },
   actionPillBtn: {
     flex: 1,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: '#202124', // Sampled 1:1 from original screenshot (RGB 32, 34, 33)
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: '#212124', // Sampled 1:1 from original screenshot (RGB 33, 33, 33)
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 8,
+    gap: 7,
   },
   actionBtnText: {
-    color: '#EFEFEF', // Sampled 1:1 from original screenshot (RGB 239, 239, 239)
+    color: '#FFFFFF', // Crisp pure white matching original screenshot
     fontSize: 15,
     fontFamily: TypographyFonts.semiBold,
     fontWeight: Platform.OS === 'ios' ? '600' : undefined,
@@ -915,12 +915,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: '#141416',
-    borderRadius: 18,
-    paddingVertical: 14,
+    borderRadius: 16,
+    paddingVertical: 13,
     paddingHorizontal: 16,
-    marginBottom: 44,
+    marginBottom: 24,
     borderWidth: 1,
-    borderColor: '#1E1E22',
+    borderColor: 'rgba(255, 255, 255, 0.05)',
   },
   cashLeft: {
     flexDirection: 'row',
@@ -942,7 +942,7 @@ const styles = StyleSheet.create({
     letterSpacing: -0.1,
   },
   sectionHeaderSpacing: {
-    marginBottom: 14,
+    marginBottom: 10,
   },
   sectionTitleInline: {
     flexDirection: 'row',
@@ -954,7 +954,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 19,
     fontFamily: TypographyFonts.bold,
-    fontWeight: '700',
+    fontWeight: Platform.OS === 'ios' ? '700' : undefined,
     letterSpacing: -0.3,
   },
   perpsSubRow: {
@@ -971,11 +971,11 @@ const styles = StyleSheet.create({
   },
   tokensCard: {
     backgroundColor: '#141416',
-    borderRadius: 18,
+    borderRadius: 16,
     paddingHorizontal: 16,
     borderWidth: 1,
-    borderColor: '#1E1E22',
-    marginBottom: 44,
+    borderColor: 'rgba(255, 255, 255, 0.05)',
+    marginBottom: 28,
   },
   tokenRow: {
     flexDirection: 'row',

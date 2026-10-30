@@ -199,12 +199,11 @@ export function PhantomCloudAvatar({
           </Svg>
         );
 
-      case 'cloud':
-      default:
+      case 'yellow_cloud':
         return (
           <Svg width={size} height={size} viewBox="0 0 38 38">
             <Defs>
-              <ClipPath id="circleClipDefault">
+              <ClipPath id="circleClipYellow">
                 <Circle cx="19" cy="19" r="19" />
               </ClipPath>
             </Defs>
@@ -212,7 +211,7 @@ export function PhantomCloudAvatar({
             {/* Base Authentic Phantom Yellow Circle */}
             <Circle cx="19" cy="19" r="19" fill="#FFD54F" />
 
-            <G clipPath="url(#circleClipDefault)">
+            <G clipPath="url(#circleClipYellow)">
               {/* Cute Puffy White Cloud in top-left */}
               <G transform="translate(3, 4)">
                 <Path
@@ -272,6 +271,61 @@ export function PhantomCloudAvatar({
                 {/* Pink Blush Cheeks */}
                 <Circle cx="5" cy="12.5" r="1.5" fill="#FF8BA7" opacity={0.8} />
                 <Circle cx="17" cy="12.5" r="1.5" fill="#FF8BA7" opacity={0.8} />
+              </G>
+            </G>
+          </Svg>
+        );
+
+      case 'cloud':
+      default:
+        return (
+          <Svg width={size} height={size} viewBox="0 0 38 38">
+            <Defs>
+              <ClipPath id="circleClipDefault">
+                <Circle cx="19" cy="19" r="19" />
+              </ClipPath>
+            </Defs>
+
+            {/* Base Lavender/Lilac Circle matching Image 1 (21:46 screenshot) */}
+            <Circle cx="19" cy="19" r="19" fill="#9FA2FF" />
+
+            <G clipPath="url(#circleClipDefault)">
+              {/* Blue Cloud in top-left area */}
+              <G transform="translate(4, 5)">
+                <Path
+                  d="M 5 9.5 
+                     C 3.5 9.5 2 8 2 6.5 
+                     C 2 5.2 3 4.2 4.2 4 
+                     C 4.6 2.3 6.2 1 8.2 1 
+                     C 10.5 1 12.3 2.5 12.8 4.6 
+                     C 13.2 4.4 13.7 4.3 14.2 4.3 
+                     C 16 4.3 17.5 5.8 17.5 7.6 
+                     C 17.5 9.4 16 9.5 14.5 9.5 Z"
+                  fill="#5299FF"
+                />
+                <Path
+                  d="M 5.5 4 C 6.5 2.5 8 2 9.5 2.2"
+                  stroke="#A8D0FF"
+                  strokeWidth="0.75"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+              </G>
+
+              {/* Cool Sunglasses in center/lower-right */}
+              <G transform="translate(11, 16.5)">
+                <Rect x="0" y="0.5" width="22" height="2.2" rx="0.8" fill="#111116" />
+                <Path
+                  d="M 0.5 2.5 L 9 2.5 L 8.5 8.5 C 8.5 9.8 7.3 10.5 6 10.5 L 2.5 10.5 C 1.2 10.5 0.5 9.6 0.5 8.5 Z"
+                  fill="#111116"
+                />
+                <Rect x="8.5" y="2.5" width="4.5" height="1.8" fill="#111116" />
+                <Path
+                  d="M 12.5 2.5 L 21 2.5 L 21 8.5 C 21 9.6 20.3 10.5 19 10.5 L 15.5 10.5 C 14.2 10.5 13 9.8 13 8.5 Z"
+                  fill="#111116"
+                />
+                <Rect x="2" y="3.8" width="1.8" height="4" rx="0.5" fill="#FFFFFF" opacity={0.4} />
+                <Rect x="14.2" y="3.8" width="1.8" height="4" rx="0.5" fill="#FFFFFF" opacity={0.4} />
               </G>
             </G>
           </Svg>
