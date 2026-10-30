@@ -16,6 +16,23 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npx expo start
    ```
 
+## Sign in and backend setup
+
+The app creates accounts with `POST /users` and signs in with `POST /auth/login`.
+Deposits use the authenticated `POST /balance/deposit` endpoint and save balance
+updates to MongoDB. The current Add Cash screen records a database balance credit;
+it does not charge a card or payment provider.
+
+Set `EXPO_PUBLIC_API_URL` before starting Expo or creating an APK. Copy
+`.env.example` to `.env.local` and set the value to a URL the device can reach.
+For a phone on the same Wi-Fi as your computer, use the computer's LAN address,
+such as `http://192.168.1.20:3000`; `localhost` on the phone points to the phone.
+For an installed EAS build, configure `EXPO_PUBLIC_API_URL` in the EAS `preview`
+environment before building. Use an HTTPS URL for a deployed backend.
+
+Start the backend from `backend/` with `npm run dev` after setting its MongoDB
+connection string in `backend/.env`.
+
 In the output, you'll find options to open the app in a
 
 - [development build](https://docs.expo.dev/develop/development-builds/introduction/)

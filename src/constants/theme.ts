@@ -1,13 +1,30 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://unistyl.es/), etc.
- */
-
-import '@/global.css';
-
 import { Platform } from 'react-native';
 
 export const Colors = {
+  phantom: {
+    background: '#000000',
+    card: '#18181A',
+    cardBorder: 'transparent',
+    cardHighlight: '#222226',
+    pillInactive: '#222225',
+    pillInactiveText: '#98989F',
+    pillActive: '#9FA2FF',
+    pillActiveText: '#000000',
+    accentPurple: '#9FA2FF',
+    accentPurpleLight: '#BDB7FF',
+    text: '#FFFFFF',
+    textSecondary: '#8E8E93',
+    textMuted: '#636366',
+    green: '#00D26A',
+    greenBg: 'rgba(0, 210, 106, 0.15)',
+    red: '#FF2B4D',
+    redBg: '#FF1C4E',
+    redBgSubtle: 'rgba(255, 43, 77, 0.16)',
+    yellowAvatar: '#9FA2FF',
+    blueBar: '#3B82F6',
+    yellowBar: '#EAB308',
+    grayBar: '#334155',
+  },
   light: {
     text: '#000000',
     background: '#ffffff',
@@ -18,38 +35,27 @@ export const Colors = {
   dark: {
     text: '#ffffff',
     background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
+    backgroundElement: '#18181A',
+    backgroundSelected: '#202023',
+    textSecondary: '#8E8E93',
   },
 } as const;
 
-export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
+export type ThemeColor = keyof typeof Colors.light;
 
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
-  },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
-  },
-  web: {
-    sans: 'var(--font-display)',
-    serif: 'var(--font-serif)',
-    rounded: 'var(--font-rounded)',
-    mono: 'var(--font-mono)',
-  },
-});
+export { TypographyFonts, Typography, type PhantomTypographyVariant } from './typography';
+
+export const Fonts = {
+  black: 'Inter-Black',
+  bold: 'Inter-Bold',
+  semiBold: 'Inter-SemiBold',
+  medium: 'Inter-Medium',
+  regular: 'Inter-Regular',
+  sans: 'Inter-Regular',
+  serif: 'serif',
+  rounded: 'normal',
+  mono: 'monospace',
+};
 
 export const Spacing = {
   half: 2,
@@ -62,4 +68,4 @@ export const Spacing = {
 } as const;
 
 export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
-export const MaxContentWidth = 800;
+export const MaxContentWidth = 480;
