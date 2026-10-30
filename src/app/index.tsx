@@ -18,6 +18,8 @@ import { AccountsView } from '@/components/AccountsView';
 import { DepositModal } from '@/components/DepositModal';
 import { AddCashModal } from '@/components/AddCashModal';
 import { QuickActionModal } from '@/components/QuickActionModal';
+import { ReceiveModal } from '@/components/ReceiveModal';
+import { TradeModal } from '@/components/TradeModal';
 import { SearchModal } from '@/components/SearchModal';
 import { TokenDetailModal } from '@/components/TokenDetailModal';
 import { SettingsModal } from '@/components/SettingsModal';
@@ -59,6 +61,8 @@ export default function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isSendOpen, setIsSendOpen] = useState(false);
+  const [isReceiveOpen, setIsReceiveOpen] = useState(false);
+  const [isTradeModalOpen, setIsTradeModalOpen] = useState(false);
   const [isFavoriteActive, setIsFavoriteActive] = useState(false);
   const [selectedToken, setSelectedToken] = useState<TokenItem | UserHolding | WatchlistToken | null>(null);
 
@@ -183,19 +187,26 @@ export default function App() {
   };
 
   const handleActionSelect = (action: string) => {
-    if (action === 'buy') {
-      setIsAddCashOpen(true);
-      return;
-    }
     if (action === 'send') {
       setIsSendOpen(true);
       return;
     }
-    Alert.alert(
-      action.toUpperCase(),
-      `Initiate ${action} workflow for connected account.`,
-      [{ text: 'OK' }]
-    );
+    if (action === 'receive') {
+      setIsReceiveOpen(true);
+      return;
+    }
+    if (action === 'deposit') {
+      setIsDepositOpen(true);
+      return;
+    }
+    if (action === 'trade') {
+      setIsTradeModalOpen(true);
+      return;
+    }
+    if (action === 'buy') {
+      setIsAddCashOpen(true);
+      return;
+    }
   };
 
   const handleSendCompleted = async (amount: number, recipient: string, asset: 'SOL' | 'CASH') => {
@@ -448,12 +459,10 @@ export default function App() {
             onClose={() => setIsDepositOpen(false)}
             onSelectAddCash={() => setIsAddCashOpen(true)}
             onSelectBuyCrypto={() => setIsAddCashOpen(true)}
-            onSelectReceiveCrypto={() =>
-              Alert.alert(
-                'Receive Address',
-                'Solana Address:\n7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU'
-              )
-            }
+            onSelectReceiveCrypto={() => {
+              setIsDepositOpen(false);
+              setIsReceiveOpen(true);
+            }}
           />
 
           <AddCashModal
@@ -466,6 +475,26 @@ export default function App() {
             visible={isQuickActionOpen}
             onClose={() => setIsQuickActionOpen(false)}
             onActionSelect={handleActionSelect}
+          />
+
+          <ReceiveModal
+            visible={isReceiveOpen}
+            onClose={() => setIsReceiveOpen(false)}
+          />
+
+          <TradeModal
+            visible={isTradeModalOpen}
+            onClose={() => setIsTradeModalOpen(false)}
+            solAmount={solAmount}
+            cashBalance={cashBalance}
+            solPrice={solPrice}
+            onExecuteSwap={(from, to, amt) => {
+              if (from === 'SOL') {
+                handleExecuteSell(amt, Number((amt * solPrice).toFixed(2)));
+              } else {
+                handleExecuteBuy(Number((amt / solPrice).toFixed(6)), amt);
+              }
+            }}
           />
 
           <SearchModal

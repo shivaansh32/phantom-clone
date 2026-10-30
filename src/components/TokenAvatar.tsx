@@ -555,6 +555,133 @@ function AeroLogo({ size }: { size: number }) {
   );
 }
 
+/**
+ * 30. UNI (Uniswap) Official Pink Unicorn Logo
+ */
+function UniLogo({ size }: { size: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 36 36">
+      <Circle cx="18" cy="18" r="18" fill="#1C1428" />
+      <Path
+        d="M 14 8 C 16 10, 18 12, 17 15 C 20 13, 24 14, 25 17 C 27 15, 29 18, 27 21 C 29 23, 28 26, 25 27 C 22 28, 17 28, 13 25 C 10 22, 9 17, 11 13 Z"
+        fill="#FF007A"
+      />
+      <Path
+        d="M 15 10 L 19 6 L 17 12 Z"
+        fill="#FF77B6"
+      />
+      <Circle cx="18" cy="18" r="1.5" fill="#FFFFFF" />
+    </Svg>
+  );
+}
+
+/**
+ * 31. Paper Logo (Official white paper folded icon)
+ */
+function PaperLogo({ size }: { size: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 36 36">
+      <Circle cx="18" cy="18" r="18" fill="#E8EDE8" />
+      <G transform="translate(9, 8)">
+        <Rect x="2" y="2" width="14" height="16" rx="2" fill="#2E4A35" />
+        <Path d="M 5 6 H 13 M 5 10 H 13 M 5 14 H 10" stroke="#FFFFFF" strokeWidth="1.2" strokeLinecap="round" />
+      </G>
+    </Svg>
+  );
+}
+
+/**
+ * 32. NVDA (Nvidia) Official Neon Green Logo
+ */
+function NvdaLogo({ size }: { size: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 36 36">
+      <Circle cx="18" cy="18" r="18" fill="#000000" />
+      <Path
+        d="M 18 9 C 13.5 9, 10 12.5, 10 17 C 10 21.5, 13.5 25, 18 25 C 22.5 25, 26 21.5, 26 17"
+        stroke="#76B900"
+        strokeWidth="3"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <Path
+        d="M 18 13 C 15.8 13, 14 14.8, 14 17 C 14 19.2, 15.8 21, 18 21 C 20.2 21, 22 19.2, 22 17"
+        stroke="#76B900"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        fill="none"
+      />
+    </Svg>
+  );
+}
+
+/**
+ * 33. BNB (Binance) Official Gold Diamond Logo
+ */
+function BnbLogo({ size }: { size: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 36 36">
+      <Circle cx="18" cy="18" r="18" fill="#F3BA2F" />
+      <Path
+        d="M 18 10 L 22 14 L 18 18 L 14 14 Z M 11 15 L 13 17 L 11 19 L 9 17 Z M 25 15 L 27 17 L 25 19 L 23 17 Z M 18 20 L 22 24 L 18 28 L 14 24 Z"
+        fill="#FFFFFF"
+      />
+    </Svg>
+  );
+}
+
+/**
+ * 34. Base (Coinbase) Official Blue Circle Logo
+ */
+function BaseLogo({ size }: { size: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 36 36">
+      <Circle cx="18" cy="18" r="18" fill="#0052FF" />
+      <Circle cx="18" cy="18" r="10" fill="#FFFFFF" />
+      <Circle cx="20" cy="18" r="7" fill="#0052FF" />
+    </Svg>
+  );
+}
+
+/**
+ * 35. Polygon Official Purple Polygon Logo
+ */
+function PolygonLogo({ size }: { size: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 36 36">
+      <Circle cx="18" cy="18" r="18" fill="#8247E5" />
+      <Path
+        d="M 18 11 L 24 14.5 V 21.5 L 18 25 L 12 21.5 V 14.5 Z"
+        stroke="#FFFFFF"
+        strokeWidth="2.2"
+        fill="none"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+}
+
+/**
+ * 36. Robinhood Official Green Feather Logo
+ */
+function RobinhoodLogo({ size }: { size: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 36 36">
+      <Circle cx="18" cy="18" r="18" fill="#000000" />
+      <Path
+        d="M 22 9 C 18 12, 14 18, 12 26 C 16 24, 20 20, 22 15 C 23 12, 23 10, 22 9 Z"
+        fill="#00C805"
+      />
+      <Path
+        d="M 12 26 L 16 21"
+        stroke="#FFFFFF"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+      />
+    </Svg>
+  );
+}
+
 export function TokenAvatar({
   symbol,
   iconBg,
@@ -701,6 +828,35 @@ export function TokenAvatar({
         return <VirtualLogo size={size} />;
       case 'cards':
         return <CardsLogo size={size} />;
+      case 'uni':
+      case 'uniswap':
+        return <UniLogo size={size} />;
+      case 'paper':
+        return <PaperLogo size={size} />;
+      case 'nvda':
+      case 'nvidia':
+        return <NvdaLogo size={size} />;
+      case 'bnb':
+      case 'binance':
+      case 'bnb chain':
+        return <BnbLogo size={size} />;
+      case 'base':
+        return <BaseLogo size={size} />;
+      case 'polygon':
+      case 'matic':
+        return <PolygonLogo size={size} />;
+      case 'robinhood':
+        return <RobinhoodLogo size={size} />;
+      case 'neuralink':
+        return <NeuralinkLogo size={size} />;
+      case 'xmr':
+        return <XmrLogo size={size} />;
+      case 'beam':
+        return <BeamLogo size={size} />;
+      case 'chillhouse':
+        return <ChillhouseLogo size={size} />;
+      case 'aero':
+        return <AeroLogo size={size} />;
       case 'microduck':
       case 'duck':
         return <Text style={{ fontSize: size * 0.52 }}>🦆</Text>;
