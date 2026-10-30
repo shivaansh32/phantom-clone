@@ -452,6 +452,109 @@ function CardsLogo({ size }: { size: number }) {
   );
 }
 
+/**
+ * 25. NEURALINK Logo (Geometric black circuit symbol on white)
+ */
+function NeuralinkLogo({ size }: { size: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 36 36">
+      <Circle cx="18" cy="18" r="18" fill="#FFFFFF" />
+      <Path
+        d="M 11 11 L 22 11 L 16 25 L 11 11 Z"
+        stroke="#000000"
+        strokeWidth="2.2"
+        fill="none"
+        strokeLinejoin="round"
+      />
+      <Path
+        d="M 22 11 L 25 18 L 19 25"
+        stroke="#000000"
+        strokeWidth="2.2"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+}
+
+/**
+ * 26. XMR (Monero) Official Logo
+ */
+function XmrLogo({ size }: { size: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 36 36">
+      <Circle cx="18" cy="18" r="18" fill="#F26822" />
+      <Path
+        d="M 7 24 V 11 L 18 20 L 29 11 V 24 H 25 V 16.5 L 18 22.5 L 11 16.5 V 24 Z"
+        fill="#FFFFFF"
+      />
+      <Path
+        d="M 4 24 H 8 V 26 H 4 Z M 28 24 H 32 V 26 H 28 Z"
+        fill="#FFFFFF"
+      />
+    </Svg>
+  );
+}
+
+/**
+ * 27. BEAM Official Rainbow Slices Logo
+ */
+function BeamLogo({ size }: { size: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 36 36">
+      <Defs>
+        <LinearGradient id="beamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <Stop offset="0%" stopColor="#EF4444" />
+          <Stop offset="25%" stopColor="#F97316" />
+          <Stop offset="50%" stopColor="#FBBF24" />
+          <Stop offset="75%" stopColor="#06B6D4" />
+          <Stop offset="100%" stopColor="#8B5CF6" />
+        </LinearGradient>
+      </Defs>
+      <Circle cx="18" cy="18" r="18" fill="url(#beamGrad)" />
+      <Rect y="6" width="36" height="5" fill="#EF4444" />
+      <Rect y="11" width="36" height="5" fill="#F97316" />
+      <Rect y="16" width="36" height="5" fill="#FBBF24" />
+      <Rect y="21" width="36" height="5" fill="#06B6D4" />
+      <Rect y="26" width="36" height="5" fill="#8B5CF6" />
+    </Svg>
+  );
+}
+
+/**
+ * 28. CHILLHOUSE Logo
+ */
+function ChillhouseLogo({ size }: { size: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 36 36">
+      <Circle cx="18" cy="18" r="18" fill="#C8B8A6" />
+      <Path d="M 11 18 L 18 12 L 25 18 V 26 H 11 Z" fill="#E8D5C4" stroke="#4A3B32" strokeWidth="1.2" />
+      <Path d="M 9 18 L 18 10 L 27 18 Z" fill="#8B5A3C" stroke="#4A3B32" strokeWidth="1.2" />
+      <Rect x="21" y="9" width="3" height="5" fill="#8B5A3C" stroke="#4A3B32" strokeWidth="1" />
+      <Circle cx="15" cy="20" r="1.2" fill="#2E241E" />
+      <Circle cx="21" cy="20" r="1.2" fill="#2E241E" />
+      <Path d="M 17 23 Q 18 24.5 19 23" stroke="#2E241E" strokeWidth="0.8" fill="none" />
+    </Svg>
+  );
+}
+
+/**
+ * 29. AERO (Aerodrome Finance) Logo
+ */
+function AeroLogo({ size }: { size: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 36 36">
+      <Circle cx="18" cy="18" r="18" fill="#0052FF" />
+      <Path
+        d="M 10 24 C 12 16, 20 12, 26 12 C 22 17, 18 21, 10 24 Z"
+        fill="#FFFFFF"
+      />
+      <Circle cx="23" cy="14" r="2.5" fill="#FFFFFF" />
+    </Svg>
+  );
+}
+
 export function TokenAvatar({
   symbol,
   iconBg,
@@ -521,6 +624,16 @@ export function TokenAvatar({
         return '#B2EFE7';
       case 'cards':
         return '#281A32';
+      case 'neuralink':
+        return '#0D0D12';
+      case 'xmr':
+        return '#F26822';
+      case 'beam':
+        return '#181C26';
+      case 'chillhouse':
+        return '#C8B8A6';
+      case 'aero':
+        return '#0052FF';
       default:
         return '#252538';
     }
@@ -528,6 +641,16 @@ export function TokenAvatar({
 
   const renderIcon = () => {
     switch (key) {
+      case 'neuralink':
+        return <NeuralinkLogo size={size} />;
+      case 'xmr':
+        return <XmrLogo size={size} />;
+      case 'beam':
+        return <BeamLogo size={size} />;
+      case 'chillhouse':
+        return <ChillhouseLogo size={size} />;
+      case 'aero':
+        return <AeroLogo size={size} />;
       case 'sol':
       case 'solana':
         return <SolanaLogo size={size} />;

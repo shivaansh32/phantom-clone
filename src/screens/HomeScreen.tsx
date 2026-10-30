@@ -179,24 +179,22 @@ export function HomeScreen({
   });
 
   const isStarterAccount = solAmount === 0 && cashBalance === 0;
-  const [marketFilter, setMarketFilter] = useState<'Trending' | 'Majors' | 'Perps'>('Trending');
+  const [marketFilter, setMarketFilter] = useState<'Trending' | 'Perps' | 'Global Markets'>('Trending');
   const [isHeartActive, setIsHeartActive] = useState<boolean>(true);
 
   if (isStarterAccount) {
     let displayedTokens: TokenItem[] | StarterMarketToken[] = STARTER_MARKET_TOKENS;
-    if (marketFilter === 'Majors') {
+    if (marketFilter === 'Perps') {
       displayedTokens = [
-        { id: 'sol', name: 'Solana', symbol: 'SOL', marketCap: '$86B MC', price: solPrice, change24h: solChange24h, rankBadge: '1', iconBg: '#0A0A0E', iconType: 'sol' },
-        { id: 'btc', name: 'Bitcoin', symbol: 'BTC', marketCap: '$1.3T MC', price: 68450.00, change24h: 2.15, rankBadge: '2', iconBg: '#F7931A', iconType: 'btc' },
-        { id: 'eth', name: 'Ethereum', symbol: 'ETH', marketCap: '$400B MC', price: 3380.25, change24h: -0.65, rankBadge: '3', iconBg: '#627EEA', iconType: 'eth' },
-        { id: 'xrp', name: 'XRP', symbol: 'XRP', marketCap: '$32B MC', price: 0.584, change24h: 1.12, iconBg: '#171B26', iconType: 'xrp' },
+        { id: 'neuralink-perp', name: 'NEURALINK-PERP', symbol: 'NEURALINK-PERP', marketCap: '$1.2M OI', price: 463.60, change24h: 12.70, rankBadge: '1', iconBg: '#0D0D12', iconType: 'neuralink' },
+        { id: 'sol-perp', name: 'SOL-PERP', symbol: 'SOL-PERP', marketCap: '$420M OI', price: solPrice, change24h: solChange24h, rankBadge: '2', iconBg: '#0A0A0E', iconType: 'sol' },
+        { id: 'btc-perp', name: 'BTC-PERP', symbol: 'BTC-PERP', marketCap: '$1.1B OI', price: 68450.00, change24h: 2.15, rankBadge: '3', iconBg: '#F7931A', iconType: 'btc' },
       ];
-    } else if (marketFilter === 'Perps') {
+    } else if (marketFilter === 'Global Markets') {
       displayedTokens = [
-        { id: 'sol-perp', name: 'SOL-PERP', symbol: 'SOL-PERP', marketCap: '$420M OI', price: solPrice, change24h: solChange24h, iconBg: '#0A0A0E', iconType: 'sol' },
-        { id: 'btc-perp', name: 'BTC-PERP', symbol: 'BTC-PERP', marketCap: '$1.1B OI', price: 68450.00, change24h: 2.15, iconBg: '#F7931A', iconType: 'btc' },
-        { id: 'eth-perp', name: 'ETH-PERP', symbol: 'ETH-PERP', marketCap: '$650M OI', price: 3380.25, change24h: -0.65, iconBg: '#627EEA', iconType: 'eth' },
-        { id: 'hype-perp', name: 'HYPE-PERP', symbol: 'HYPE-PERP', marketCap: '$88M OI', price: 2.33, change24h: 38.88, iconBg: '#58E5BE', iconType: 'xhype' },
+        { id: 'btc', name: 'Bitcoin', symbol: 'BTC', marketCap: '$1.3T MC', price: 68450.00, change24h: 2.15, rankBadge: '1', iconBg: '#F7931A', iconType: 'btc' },
+        { id: 'eth', name: 'Ethereum', symbol: 'ETH', marketCap: '$400B MC', price: 3380.25, change24h: -0.65, rankBadge: '2', iconBg: '#627EEA', iconType: 'eth' },
+        { id: 'sol', name: 'Solana', symbol: 'SOL', marketCap: '$86B MC', price: solPrice, change24h: solChange24h, rankBadge: '3', iconBg: '#0A0A0E', iconType: 'sol' },
       ];
     }
 
@@ -238,7 +236,7 @@ export function HomeScreen({
           </TouchableOpacity>
         </View>
 
-        {/* 3. Filter Category Pills (Heart, Trending, Majors, Perps) */}
+        {/* 3. Filter Category Pills (Heart, Trending, Perps, Global Markets) matching Image 1 */}
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -273,22 +271,6 @@ export function HomeScreen({
           <TouchableOpacity
             style={[
               styles.filterPill,
-              marketFilter === 'Majors' ? styles.filterPillActive : styles.filterPillInactive,
-            ]}
-            onPress={() => setMarketFilter('Majors')}
-            activeOpacity={0.75}>
-            <Text
-              style={[
-                styles.filterPillText,
-                marketFilter === 'Majors' ? styles.filterPillTextActive : styles.filterPillTextInactive,
-              ]}>
-              Majors
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[
-              styles.filterPill,
               marketFilter === 'Perps' ? styles.filterPillActive : styles.filterPillInactive,
             ]}
             onPress={() => setMarketFilter('Perps')}
@@ -299,6 +281,22 @@ export function HomeScreen({
                 marketFilter === 'Perps' ? styles.filterPillTextActive : styles.filterPillTextInactive,
               ]}>
               Perps
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.filterPill,
+              marketFilter === 'Global Markets' ? styles.filterPillActive : styles.filterPillInactive,
+            ]}
+            onPress={() => setMarketFilter('Global Markets')}
+            activeOpacity={0.75}>
+            <Text
+              style={[
+                styles.filterPillText,
+                marketFilter === 'Global Markets' ? styles.filterPillTextActive : styles.filterPillTextInactive,
+              ]}>
+              Global Markets
             </Text>
           </TouchableOpacity>
         </ScrollView>
@@ -665,16 +663,16 @@ const styles = StyleSheet.create({
     paddingBottom: 110,
   },
   starterHeroCard: {
-    backgroundColor: '#151518',
+    backgroundColor: '#16161B',
     borderRadius: 24,
     marginHorizontal: 16,
     marginTop: 8,
-    paddingTop: 24,
-    paddingBottom: 20,
+    paddingTop: 26,
+    paddingBottom: 22,
     paddingHorizontal: 20,
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.05)',
+    borderColor: 'rgba(255, 255, 255, 0.07)',
   },
   starterGraphicWrap: {
     marginBottom: 14,
@@ -684,23 +682,25 @@ const styles = StyleSheet.create({
   starterTitle: {
     color: '#FFFFFF',
     fontSize: 24,
-    fontWeight: '700',
+    fontFamily: TypographyFonts.bold,
+    fontWeight: Platform.OS === 'ios' ? '700' : undefined,
     textAlign: 'center',
     marginBottom: 8,
-    letterSpacing: -0.3,
+    letterSpacing: -0.4,
   },
   starterSubtitle: {
     color: '#8E8E98',
     fontSize: 15,
-    fontWeight: '400',
+    fontFamily: TypographyFonts.regular,
+    fontWeight: Platform.OS === 'ios' ? '400' : undefined,
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 22,
     letterSpacing: -0.2,
   },
   starterDepositBtn: {
     backgroundColor: '#ABA0EE',
-    borderRadius: 24,
-    height: 48,
+    borderRadius: 25,
+    height: 50,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -708,7 +708,9 @@ const styles = StyleSheet.create({
   starterDepositBtnText: {
     color: '#070709',
     fontSize: 16,
-    fontWeight: '700',
+    fontFamily: TypographyFonts.bold,
+    fontWeight: Platform.OS === 'ios' ? '700' : undefined,
+    letterSpacing: -0.2,
   },
   exploreHeaderRow: {
     marginHorizontal: 16,
@@ -722,7 +724,8 @@ const styles = StyleSheet.create({
   exploreTitle: {
     color: '#FFFFFF',
     fontSize: 22,
-    fontWeight: '700',
+    fontFamily: TypographyFonts.bold,
+    fontWeight: Platform.OS === 'ios' ? '700' : undefined,
     letterSpacing: -0.4,
   },
   exploreChevron: {
@@ -762,14 +765,17 @@ const styles = StyleSheet.create({
   },
   filterPillText: {
     fontSize: 15,
+    letterSpacing: -0.2,
   },
   filterPillTextActive: {
     color: '#000000',
-    fontWeight: '700',
+    fontFamily: TypographyFonts.bold,
+    fontWeight: Platform.OS === 'ios' ? '700' : undefined,
   },
   filterPillTextInactive: {
-    color: '#8E8E93',
-    fontWeight: '600',
+    color: '#8E8E98',
+    fontFamily: TypographyFonts.semiBold,
+    fontWeight: Platform.OS === 'ios' ? '600' : undefined,
   },
   starterTokensList: {
     paddingHorizontal: 16,
@@ -790,13 +796,15 @@ const styles = StyleSheet.create({
   starterTokenSymbol: {
     color: '#FFFFFF',
     fontSize: 16,
-    fontWeight: '700',
+    fontFamily: TypographyFonts.bold,
+    fontWeight: Platform.OS === 'ios' ? '700' : undefined,
     letterSpacing: -0.2,
   },
   starterTokenMc: {
-    color: '#8E8E93',
+    color: '#8E8E98',
     fontSize: 13,
-    fontWeight: '400',
+    fontFamily: TypographyFonts.regular,
+    fontWeight: Platform.OS === 'ios' ? '400' : undefined,
     marginTop: 2,
   },
   starterTokenRight: {
@@ -805,12 +813,14 @@ const styles = StyleSheet.create({
   starterTokenPrice: {
     color: '#FFFFFF',
     fontSize: 16,
-    fontWeight: '600',
+    fontFamily: TypographyFonts.semiBold,
+    fontWeight: Platform.OS === 'ios' ? '600' : undefined,
     letterSpacing: -0.2,
   },
   starterTokenChange: {
     fontSize: 13,
-    fontWeight: '600',
+    fontFamily: TypographyFonts.semiBold,
+    fontWeight: Platform.OS === 'ios' ? '600' : undefined,
     marginTop: 2,
   },
   accountSelector: {

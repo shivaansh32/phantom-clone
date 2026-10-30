@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Platform } from 'react-native';
+import { Platform, Text as RNText, TextInput as RNTextInput } from 'react-native';
 import { DarkTheme, ThemeProvider, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -7,6 +7,17 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
+
+// Ensure React Native default Text style always uses Inter sans-serif on Android/iOS (never system serif)
+if ((RNText as any).defaultProps == null) {
+  (RNText as any).defaultProps = {};
+}
+(RNText as any).defaultProps.style = { fontFamily: 'Inter-Regular' };
+
+if ((RNTextInput as any).defaultProps == null) {
+  (RNTextInput as any).defaultProps = {};
+}
+(RNTextInput as any).defaultProps.style = { fontFamily: 'Inter-Regular' };
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({

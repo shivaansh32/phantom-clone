@@ -150,6 +150,8 @@ export function WelcomePhantomGraphic({
           <Circle cx="16" cy="18" r="2.4" fill="#1E1638" />
           {/* Right Eye */}
           <Circle cx="26" cy="18" r="2.4" fill="#1E1638" />
+          {/* Cute smiling mouth matching screenshot */}
+          <Path d="M 18.5 22.5 Q 21 25.5 23.5 22.5" stroke="#1E1638" strokeWidth="1.3" strokeLinecap="round" fill="none" />
         </G>
       </Svg>
     </View>
