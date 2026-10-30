@@ -122,35 +122,10 @@ export function getDeviceModelDescriptor(): string {
 
 /**
  * Check whether this specific device is already activated
+ * (Temporarily bypassed - OTP gate disabled for now)
  */
 export async function checkDeviceActivationStatus(): Promise<{ isActivated: boolean }> {
-  try {
-    const isLocalActivated = await safeStorage.getItem(ACTIVATION_STORAGE_KEYS.IS_ACTIVATED);
-    const token = await safeStorage.getItem(ACTIVATION_STORAGE_KEYS.ACTIVATION_TOKEN);
-
-    if (isLocalActivated === 'true' && token) {
-      return { isActivated: true };
-    }
-
-    // If online and API URL configured, verify with backend
-    if (API_BASE_URL) {
-      const deviceId = await getDeviceId();
-      const { ok, data } = await safeFetchJson(`${API_BASE_URL}/activation/check-status`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ deviceId, activationToken: token }),
-      });
-
-      if (ok && data?.isActivated) {
-        await safeStorage.setItem(ACTIVATION_STORAGE_KEYS.IS_ACTIVATED, 'true');
-        return { isActivated: true };
-      }
-    }
-  } catch (err) {
-    console.warn('[Activation] Status check error:', err);
-  }
-
-  return { isActivated: false };
+  return { isActivated: true };
 }
 
 /**

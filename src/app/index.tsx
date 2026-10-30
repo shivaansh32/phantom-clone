@@ -88,12 +88,12 @@ export default function App() {
   useEffect(() => {
     requestNotificationPermissions();
 
-    // Hardware-locked device activation check
-    checkDeviceActivationStatus().then(({ isActivated }) => {
-      if (!isActivated) {
-        setIsActivationGateOpen(true);
-      }
-    });
+    // Hardware-locked device activation check (disabled for now)
+    // checkDeviceActivationStatus().then(({ isActivated }) => {
+    //   if (!isActivated) {
+    //     setIsActivationGateOpen(true);
+    //   }
+    // });
 
     async function initLocalStorage() {
       try {
@@ -601,11 +601,11 @@ export default function App() {
             onSendCompleted={handleSendCompleted}
           />
 
-          {/* Hardware-Locked Device Activation Screen */}
-          <ActivationGateModal
+          {/* Hardware-Locked Device Activation Screen (disabled for now) */}
+          {/* <ActivationGateModal
             visible={isActivationGateOpen}
             onActivated={() => setIsActivationGateOpen(false)}
-          />
+          /> */}
 
           {/* Top Slide-Down System Notification Banner */}
           <NotificationBanner />
